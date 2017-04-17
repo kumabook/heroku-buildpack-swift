@@ -1,5 +1,4 @@
 cd $BUILD_DIR
-
+echo $BUILD_DIR
 puts-step "Building Package ... this will take a while"
-echo "swift build $SWIFT_BUILD_FLAGS -c release"
-swift build $SWIFT_BUILD_FLAGS -c release
+swift build $SWIFT_BUILD_FLAGS -Xlinker -L.apt/usr/lib -c release

@@ -23,6 +23,12 @@ if [ -f "$ENV_DIR/SWIFT_BUILD_FLAGS" ]; then
   SWIFT_BUILD_FLAGS=`cat "$ENV_DIR/SWIFT_BUILD_FLAGS"`
 fi
 
+echo $ENV_DIR
+echo `cat "$ENV_DIR/SWIFT_BUILD_FLAGS"`
+echo $LD_LIBRARY_PATH
+echo $LIBRARY_PATH
+echo $INCLUDE_PATH
+
 mkdir -p "$CACHE_DIR"
 
 source "$BIN_DIR/utils"
@@ -37,6 +43,6 @@ source "$BIN_DIR/steps/swift-install"
 mkdir -p $BUILD_DIR/.profile.d
 
 set-env PATH '$HOME/.swift-bin:$PATH'
-set-env LD_LIBRARY_PATH '$HOME/.swift-lib'
+set-env LD_LIBRARY_PATH '$HOME/.swift-lib:$HOME/.apt/usr/lib/'
 
 source "$BIN_DIR/steps/hooks/post_compile"
